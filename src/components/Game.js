@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Board from "./Board";
-import giphy from '../giphy.gif';
+import giphy from "../giphy.gif";
 import "../styles.css";
 import { calculateWinner } from "../helpers";
 const styles = {
   textAlign: "center",
-  margin: "20px auto",
+  margin: "auto",
+  width: " 50%",
 };
 
 const gifStyle = {};
@@ -27,25 +28,24 @@ const Game = () => {
   const jumpTo = () => {};
 
   const renderMoves = () => (
-    <button className="start-btn" onClick={() => setBoard(Array(9).fill(null))}>Start Game</button>
+    <button className="start-btn" onClick={() => setBoard(Array(9).fill(null))}>
+      Start Game
+    </button>
   );
 
   return (
     <>
       <Board squares={board} onClick={handleClick} />;
       <div style={styles}>
-        <p className={ winner ? 'winner' : ''}>
+        <p className={winner ? "winner" : ""}>
           {winner
             ? "Winner: " + winner
             : "Next Player: " + (xIsNext ? "X" : "O")}
         </p>
         {renderMoves()}
       </div>
-      <div className="winning-logo"> 
-     
-        {winner ? (
-         <img className="logo" src={giphy} alt="logo" />
-        ) : null}
+      <div className="winning-logo">
+        {winner ? <img className="logo" src={giphy} alt="logo" /> : null}
       </div>
     </>
   );
